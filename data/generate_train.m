@@ -3,7 +3,7 @@ close all;
 %% settings
 
 folder ='./DIV2K_val_HR';
-savepath = 'val_DIV2K_96_8.h5';
+savepath = 'val_DIV2K_96_4.h5';
 size_label =96;
 scale = 4;
 size_input = size_label/scale;
