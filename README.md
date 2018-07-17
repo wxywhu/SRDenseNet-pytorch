@@ -20,7 +20,7 @@ optional arguments:
   --nEpochs NEPOCHS     number of epochs to train for
   --lr LR               Learning Rate. Default=1e-4
   --step STEP           Sets the learning rate to the initial LR decayed by
-                        momentum every n epochs, Default: n=30
+                        10 every n epochs, Default: n=30
   --cuda                Use cuda?
   --resume RESUME       Path to checkpoint (default: none)
   --start-epoch START_EPOCH
