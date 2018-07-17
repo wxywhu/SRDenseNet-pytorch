@@ -55,7 +55,6 @@ class Net(nn.Module):
         self.convt1 = nn.ConvTranspose2d(in_channels=128, out_channels=128, kernel_size=4, stride=2, padding=1, bias=True)
         
         self.convt2 =nn.ConvTranspose2d(in_channels=128, out_channels=128, kernel_size=4, stride=2, padding=1, bias=True)
-        #self.convt2 =nn.ConvTranspose2d(in_channels=128, out_channels=128, kernel_size=4, stride=4, padding=0, bias=True)
         
         self.conv2 =nn.Conv2d(in_channels=128, out_channels=1, kernel_size=3,padding=1, bias=True)
     
@@ -83,6 +82,4 @@ class Net(nn.Module):
         HR = self.conv2(out)
         return HR
 
-
-# In[17]:
 
