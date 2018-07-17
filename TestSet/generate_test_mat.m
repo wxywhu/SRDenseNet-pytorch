@@ -1,7 +1,7 @@
 clear;close all;
 %% settings
-folder = 'Set14';
-scale = 8;
+folder = 'DIV2K_train_HR';
+scale = 4;
 
 %% generate data
 filepaths = [];
