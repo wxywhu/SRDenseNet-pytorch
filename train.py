@@ -50,7 +50,7 @@ train_set = DatasetFromHdf5("./train_DIV2K_96_4.h5")
 training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, batch_size=opt.batchSize, shuffle=True)
 print("===> Building model")
 
-model = Net(16,16,6,6)
+model = Net(16,16,8,8)
 if torch.cuda.device_count() > 1:
   print("Let's use", torch.cuda.device_count(), "GPUs!")
   model = nn.DataParallel(model)
