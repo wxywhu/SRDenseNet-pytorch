@@ -1,6 +1,5 @@
 # SRDenseNet-pytorch
-# PyTorch LapSRN
-Implementation of paper: "Deep Laplacian Pyramid Networks for Fast and Accurate Super-Resolution"(http://vllab1.ucmerced.edu/~wlai24/LapSRN/) in PyTorch
+Implementation of paper: "Image Super-Resolution Using Dense Skip Connections"(http://openaccess.thecvf.com/content_ICCV_2017/papers/Tong_Image_Super-Resolution_Using_ICCV_2017_paper.pdf) in PyTorch
 
 ## Usage
 ### Training
@@ -10,7 +9,7 @@ usage: main.py [-h] [--batchSize BATCHSIZE] [--nEpochs NEPOCHS] [--lr LR]
                [--start-epoch START_EPOCH] [--threads THREADS]
                [--pretrained PRETRAINED]
 
-Pytorch SRDenseNet
+Pytorch SRDenseNet train
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -19,7 +18,7 @@ optional arguments:
   --nEpochs NEPOCHS     number of epochs to train for
   --lr LR               Learning Rate. Default=1e-4
   --step STEP           Sets the learning rate to the initial LR decayed by
-                        momentum every n epochs, Default: n=10
+                        momentum every n epochs, Default: n=30
   --cuda                Use cuda?
   --resume RESUME       Path to checkpoint (default: none)
   --start-epoch START_EPOCH
