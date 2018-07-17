@@ -1,7 +1,7 @@
 # SRDenseNet-pytorch
 Implementation of paper: "Image Super-Resolution Using Dense Skip Connections" in PyTorch
 (http://openaccess.thecvf.com/content_ICCV_2017/papers/Tong_Image_Super-Resolution_Using_ICCV_2017_paper.pdf)
-![image](SRDenseNet-pytorch/network.png)
+![image](https://i.imgur.com/ZlNl6Zu.png)
 
 ## Usage
 ### Training
