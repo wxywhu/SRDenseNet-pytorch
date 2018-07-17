@@ -43,5 +43,5 @@ optional arguments:
 ```
 
 ### Prepare Training dataset
- The training data is generated with Matlab Bicubic Interplotation, please refer [Code for Data Generation](https://github.com/twtygqyy/pytorch-LapSRN/tree/master/data) for creating training files.
+ The training data is generated with Matlab Bicubic Interplotation, please refer [Code for Data Generation](https://github.com/wxywhu/SRDenseNet-pytorch/tree/master/data) for creating training files.
 
