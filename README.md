@@ -46,4 +46,17 @@ optional arguments:
  The training data is generated with Matlab Bicubic Interplotation, please refer [Code for Data Generation](https://github.com/wxywhu/SRDenseNet-pytorch/tree/master/data) for creating training files.
 
 ### Prepare Test dataset
- The test imageset is generated with Matlab Bicubic Interplotation, please refer [Code for test](https://github.com/wxywhu/SRDenseNet-pytorch/tree/master/Testset) for creating test imageset.
+ The test imageset is generated with Matlab Bicubic Interplotation, please refer [Code for test](https://github.com/wxywhu/SRDenseNet-pytorch/tree/master/TestSet) for creating test imageset.
+ 
+### Performance
+ We provide a pretrained SRDenseNet x4 model trained on DIV2K images from [DIV2K_train_HR] (http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip)   
+ Non-overlapping sub-images with a size of 96 × 96 were cropped in the HR space.
+ Other settings is the same as the original paper
+ 
+ - Performance in PSNR on Set5, Set14, and BSD100
+  
+| DataSet/Method        | LapSRN Paper          | LapSRN PyTorch|
+| ------------- |:----------:|:----------:|
+| Set5      | 32.02/0.893      | **31.57/0.883** |
+| Set14     | 28.50/0.778      | **28.11/0.771** |
+| BSD100    | 27.53/0.733      | **27.32/0.729** |
