@@ -1,6 +1,6 @@
 clear;close all;
 %% settings
-folder = 'DIV2K_train_HR';
+folder = 'Set5';
 scale = 4;
 
 %% generate data
@@ -16,7 +16,7 @@ for i = 1 : length(filepaths)
     [H,W,C] = size(im_gt);
     t = find('.'==filepaths(i).name);
     imname = filepaths(i).name(1:t-1);
-    filename = sprintf('Set14-output-8/%s.mat',imname);
+    filename = sprintf('Set5-output-4/%s.mat',imname);
     if C==3
         im_gt_ycbcr = rgb2ycbcr(im_gt / 255.0);
         im_gt_y = im_gt_ycbcr(:,:,1) * 255.0;
