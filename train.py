@@ -16,9 +16,12 @@ from dataset import DatasetFromHdf5
 import math
 import torch.nn.init as init
 
+import tensorflow as tf
+from tensorboardX import SummaryWriter
+# Training settings
 parser = argparse.ArgumentParser(description="SR_DenseNet")
 parser.add_argument("--batchSize", type=int, default=128, help="Training batch size")
-
+parser.add_argument("--testbatchSize", type=int, default=64, help="testing batch size")
 parser.add_argument("--nEpochs", type=int, default=50, help="Number of epochs to train for")
 parser.add_argument("--lr", type=float, default=0.0001, help="Learning Rate. Default=0.0006")
 parser.add_argument("--step", type=int, default=30, help="Sets the learning rate to the initial LR decayed by momentum every n epochs, Default: n=30")
@@ -48,6 +51,8 @@ cudnn.benchmark = True
 print("===> Loading datasets")
 train_set = DatasetFromHdf5("./train_DIV2K_96_4.h5")
 training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, batch_size=opt.batchSize, shuffle=True)
+test_set = DatasetFromHdf5("./val_DIV2K_96_4.h5")
+testing_data_loader = DataLoader(dataset=test_set, num_workers=opt.threads, batch_size=opt.testbatchSize, shuffle=True)
 print("===> Building model")
 
 model = Net(16,16,8,8)
@@ -88,7 +93,8 @@ if opt.pretrained:
 print("===> Setting Optimizer")
 
 optimizer = optim.Adam(model.parameters(), lr=opt.lr)
-
+sess=tf.Session()
+writer = SummaryWriter()
 
 def adjust_learning_rate(optimizer, epoch):
     """Sets the learning rate to the initial LR decayed by 10 every step epochs"""
@@ -122,11 +128,16 @@ def train(epoch):
 
         if iteration%200== 0:
             print("===> Epoch[{}]({}/{}): Loss: {:.8f}".format(epoch, iteration, len(training_data_loader), loss.data[0]))
-            
+            writer.add_scalar('loss',loss.data[0], (epoch-1)* 1842 +iteration)
+
+            tf.summary.scalar('loss', loss.data[0])
+            op = tf.summary.merge_all()
+            summary_str = sess.run(op)
+
     print("===> Epoch {} Complete: Avg. Loss: {:.8f}".format(epoch, epoch_loss / len(training_data_loader)))
 
 
-def test(epoch):
+def test(epoch):c
     avg_psnr = 0
     for iteration, batch in enumerate(testing_data_loader,1):
         input, target =Variable(batch[0]), Variable(batch[1])
@@ -150,10 +161,10 @@ def test(epoch):
     print("===> Avg. PSNR: {:.8f} dB".format(avg_psnr / len(testing_data_loader)))
 
 def save_checkpoint(epoch):
-    model_out_path = "SR_DenseNet_light_4/" + "model_{}_epoch_{}.pth".format(opt.lr,epoch)
+    model_out_path = "SR_DenseNet_4/" + "model_{}_epoch_{}.pth".format(opt.lr,epoch)
     state = {"epoch": epoch ,"model": model}
-    if not os.path.exists("SR_DenseNet_light_4/"):
-        os.makedirs("SR_DenseNet_light_4/")
+    if not os.path.exists("SR_DenseNet_4/"):
+        os.makedirs("SR_DenseNet_4/")
 
     torch.save(state, model_out_path)
         
@@ -162,7 +173,7 @@ def save_checkpoint(epoch):
 print("===> Training")
 for epoch in range(opt.start_epoch, opt.nEpochs + 1):
     train(epoch)
-    #test(epoch)
+    test(epoch)
     save_checkpoint(epoch)
 
 
