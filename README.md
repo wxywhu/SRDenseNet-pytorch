@@ -51,7 +51,8 @@ optional arguments:
  The test imageset is generated with Matlab Bicubic Interplotation, please refer [Code for test](https://github.com/wxywhu/SRDenseNet-pytorch/tree/master/TestSet) for creating test imageset.
  
 ### Performance
- We provide a pretrained .[SRDenseNet x4 model](https://pan.baidu.com/s/1kkuS4sEDe-KyLBKpkKzXXg) trained on DIV2K images from [DIV2K_train_HR] (http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip)   
+ We provide a pretrained .[SRDenseNet x4 model](https://pan.baidu.com/s/1kkuS4sEDe-KyLBKpkKzXXg) trained on DIV2K images from [DIV2K_train_HR] (http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip).While I use the SR_DenseNet to train this model, so the performance is test based on this code.
+ 
  Non-overlapping sub-images with a size of 96 × 96 were cropped in the HR space.
  Other settings is the same as the original paper
  
