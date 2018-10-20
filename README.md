@@ -58,7 +58,7 @@ optional arguments:
  
  - Performance in PSNR on Set5, Set14, and BSD100
   
-| DataSet/Method        | LapSRN Paper          | LapSRN PyTorch|
+| DataSet/Method        |  Paper          |  PyTorch|
 | ------------- |:----------:|:----------:|
 | Set5      | 32.02/0.893      | **31.57/0.883** |
 | Set14     | 28.50/0.778      | **28.11/0.771** |
